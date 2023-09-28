@@ -1,0 +1,4 @@
+riscof_work/
+verilator_work/
+__pycache__/
+*.vcd
