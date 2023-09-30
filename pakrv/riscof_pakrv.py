@@ -42,14 +42,14 @@ class pakrv(pluginTemplate):
        
        self.work_dir = work_dir
        self.suite_dir = suite
-       self.compile_cmd = 'riscv64-unknown-elf-gcc -march={0} \
+       self.compile_cmd = 'riscv32-unknown-elf-gcc -march={0} \
          -static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles -g\
          -T '+self.pluginpath+'/env/link.ld\
          -I '+self.pluginpath+'/env/\
          -I ' + archtest_env + ' {1} -o {2} {3}'
        
-       self.objcopy_cmd = 'riscv64-unknown-elf-objcopy -O binary {0} {1}.bin'
-       self.objdump_cmd = 'riscv64-unknown-elf-objdump -D {0} > {1}.disasm'
+       self.objcopy_cmd = 'riscv32-unknown-elf-objcopy -O binary {0} {1}.bin'
+       self.objdump_cmd = 'riscv32-unknown-elf-objdump -D {0} > {1}.disasm'
        self.hexgen_cmd  = 'python3 makehex.py {0}/{1}.bin > {0}/{1}.hex'
 
        # build simulation model
