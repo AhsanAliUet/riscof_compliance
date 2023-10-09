@@ -57,9 +57,9 @@ class pakrv(pluginTemplate):
        self.buidldir = 'verilator_work'
        comp_pakrv = 'verilator --Mdir {0} +define+COMPLIANCE=1 -cc  \
         ../../src/*.sv ../../sub/src/*.sv ../src/{1}.sv             \
-        -Wno-TIMESCALEMOD                                           \
+        -Wno-TIMESCALEMOD -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC          \
         -I../../include/ -I../../sub/include/ --top-module {1}      \
-        --exe ../src/{1}.cpp --trace --trace-structs'.format(self.buidldir, self.toplevel)
+        --exe ../src/{1}.cpp --trace --trace-structs --timing'.format(self.buidldir, self.toplevel)
        utils.shellCommand(comp_pakrv).run()
        build_pakrv = 'make -C {0} -f V{1}.mk'.format(self.buidldir, self.toplevel)
        utils.shellCommand(build_pakrv).run()
@@ -108,10 +108,10 @@ class pakrv(pluginTemplate):
           run_sim        = self.sim_pakrv.format(self.buidldir,self.toplevel,test_dir,file_name)
           utils.shellCommand(run_sim).run()
           
-          cp_sig = 'cp -f *.signature {0}/.'.format(test_dir)
+          cp_sig = 'cp -f DUT-{0}.signature {1}/.'.format(file_name, test_dir)
           utils.shellCommand(cp_sig).run()
 
-      utils.shellCommand('rm *.signature').run()
+      utils.shellCommand('rm DUT-{0}.signature'.format(file_name)).run()
 
       if not self.target_run:
           raise SystemExit
