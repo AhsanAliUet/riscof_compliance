@@ -67,7 +67,7 @@ class pakrv(pluginTemplate):
        # Simulate
        self.sim_pakrv = './{0}/V{1} \
         +imem={2}/{3}.hex           \
-        +time_out=100000000'
+        +time_out=1000000'
 
     def build(self, isa_yaml, platform_yaml):
 
