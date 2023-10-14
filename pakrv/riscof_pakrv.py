@@ -55,7 +55,7 @@ class pakrv(pluginTemplate):
        # build simulation model
        self.toplevel = 'tb_pakrv'
        self.buidldir = 'verilator_work'
-       comp_pakrv = 'verilator --Mdir {0} +define+COMPLIANCE=1 -cc  \
+       comp_pakrv = './verilator --Mdir {0} +define+COMPLIANCE=1 -cc  \
         ../../src/*.sv ../../sub/src/*.sv ../src/{1}.sv             \
         -Wno-TIMESCALEMOD -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC          \
         -I../../include/ -I../../sub/include/ --top-module {1}      \
