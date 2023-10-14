@@ -59,6 +59,7 @@ class pakrv(pluginTemplate):
         ../../src/*.sv ../../sub/src/*.sv ../src/{1}.sv             \
         -Wno-TIMESCALEMOD -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC          \
         -I../../include/ -I../../sub/include/ --top-module {1}      \
+        -I./include/                                                \
         --exe ../src/{1}.cpp --trace --trace-structs --timing'.format(self.buidldir, self.toplevel)
        utils.shellCommand(comp_pakrv).run()
        build_pakrv = 'make -C {0} -f V{1}.mk'.format(self.buidldir, self.toplevel)
