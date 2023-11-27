@@ -56,9 +56,9 @@ class pakrv(pluginTemplate):
        self.toplevel = 'tb_pakrv'
        self.buidldir = 'verilator_work'
        comp_pakrv = 'verilator --Mdir {0} +define+COMPLIANCE=1 -cc  \
-        ../../src/*.sv ../../sub/src/*.sv ../src/{1}.sv             \
+        ../../src/*.sv ../../sub/components/src/*.sv ../src/{1}.sv             \
         -Wno-TIMESCALEMOD -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC          \
-        -I../../include/ -I../../sub/include/ --top-module {1}      \
+        -I../../include -I../../sub/components/include --top-module {1}      \
         --exe ../src/{1}.cpp --trace --trace-structs --timing'.format(self.buidldir, self.toplevel)
        utils.shellCommand(comp_pakrv).run()
        build_pakrv = 'make -C {0} -f V{1}.mk'.format(self.buidldir, self.toplevel)
