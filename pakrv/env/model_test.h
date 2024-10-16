@@ -1,7 +1,7 @@
 #ifndef _COMPLIANCE_MODEL_H
 #define _COMPLIANCE_MODEL_H
 
-//pcore halt code section
+//adding dumping and stopping conditions for compliance testing
 #define RVMODEL_HALT                                          \
     la   a0, begin_signature;                                 \
     la   a1, end_signature;                                   \
